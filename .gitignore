@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+gpu-fan.service
+99-gpu-fan.rules

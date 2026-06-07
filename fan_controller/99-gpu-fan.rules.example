@@ -1,0 +1,11 @@
+# GPU Fan Controller — udev rule (USB port binding)
+# Creates persistent symlink /dev/gpu-fan-arduino regardless of which /dev/ttyUSB* the kernel assigns.
+#
+# Find your Arduino's USB port path:
+#   udevadm info --name=/dev/ttyUSB0 --attribute-walk | grep KERNELS
+#
+# Replace KERNELS=="<your-usb-port>" below with the actual port found above.
+#
+# Install: sudo cp 99-gpu-fan.rules /etc/udev/rules.d/ && sudo udevadm control --reload-rules && sudo udevadm trigger
+
+SUBSYSTEM=="tty", KERNELS=="<your-usb-port>", SYMLINK+="gpu-fan-arduino", MODE="0666"

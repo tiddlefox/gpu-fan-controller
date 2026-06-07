@@ -1,0 +1,14 @@
+[Unit]
+Description=GPU Fan Controller (Arduino PWM)
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /opt/gpu-fan-controller/gpu_fan_daemon.py
+Restart=always
+RestartSec=3
+User=your-username
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
